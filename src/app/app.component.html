@@ -1,0 +1,121 @@
+<div class="form">
+  <h2 id="registration">Registration Form</h2>
+  <form [formGroup]="reactivForm" (ngSubmit)="onSubmit()">
+    <div formGroupName="personalDetails">
+      <label for="fname">First Name</label>
+      <input
+        type="text"
+        id="fname"
+        placeholder="Your name.."
+        name="firstname"
+        formControlName="firstname"
+      />
+      <!-- <div>
+          <small *ngIf="fname.invalid && fname.touched">First Name is a required field</small>
+          <span *ngIf="firstname">You entered {{firstname}}</span>
+        </div> -->
+
+      <label for="lname">Last Name</label>
+      <input
+        type="text"
+        id="lname"
+        placeholder="Your last name.."
+        name="lastname"
+        formControlName="lastname"
+      />
+      <!-- <div>
+          <span *ngIf="lastname">You entered {{lastname}}</span>
+        </div> -->
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Your last email.."
+        name="email"
+        formControlName="email"
+      />
+
+      <div>
+        <small
+          style="color: red"
+          *ngIf="
+            !reactivForm.get('personalDetails.email').valid &&
+            reactivForm.get('personalDetails.email').touched
+          "
+          >The email you entered is not a valid email</small
+        >
+      </div>
+      <button>Set Default Values</button>
+    </div>
+
+    <label for="country">Country</label>
+    <select id="country" name="country" formControlName="country">
+      <option value="australia">Australia</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+      <option value="india">India</option>
+      <option value="uk">UK</option>
+    </select>
+
+    <label for="gender">Gender:</label>
+    <span>
+      <input
+        type="radio"
+        id=""
+        value="male"
+        name="gender"
+        formControlName="gender"
+      />
+      <label for="male">Male</label>
+
+      <input
+        type="radio"
+        id=""
+        name="gender"
+        value="female"
+        formControlName="gender"
+      />
+      <label for="female">Female</label>
+    </span>
+
+    <br /><br />
+    <label>Hobbies <i>(Optional)</i></label>
+    <div class="form-inline">
+      <label
+        ><input
+          type="checkbox"
+          value="sports"
+          name="hobbies"
+          formControlName="hobbies"
+        />
+        Sports</label
+      >
+      <label
+        ><input
+          type="checkbox"
+          value="movies"
+          name="hobbies"
+          formControlName="hobbies"
+        />
+        Movies</label
+      >
+      <label
+        ><input
+          type="checkbox"
+          value="music"
+          name="hobbies"
+          formControlName="hobbies"
+        />
+        Music</label
+      >
+    </div>
+
+    <input
+      type="submit"
+      value="Submit"
+      id="btn"
+    /><!--[disabled]="!myForm.valid"-->
+  </form>
+</div>
